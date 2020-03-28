@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.Blog;
+import model.CheckBlogPost;
 import model.User;
 
 
@@ -47,6 +48,9 @@ public class BlogController extends HttpServlet {
 		blog.setBlogTitle(title);
 		blog.setBlogDescription(description);
 		blog.setDate(postedOn);
+		
+		CheckBlogPost checkbg = new CheckBlogPost();
+		boolean checkblog = checkbg.checkBlog(blog);//user?
 
 		if(checkblog!=null) {
 			request.setAttribute("blog", blog);
